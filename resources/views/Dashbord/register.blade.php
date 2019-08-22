@@ -1,3 +1,4 @@
+
 @include('/dashbord/partials/header')
 
 <body class="bg-gradient-primary">
@@ -17,18 +18,39 @@
               @csrf
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" name="name" placeholder="First Name">
+                    <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" name="name" placeholder="First Name">
+                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" name="prenom" placeholder="Last Name">
+                    <input type="text" class="form-control form-control-user @error('prenom') is-invalid @enderror" name="prenom" placeholder="Last Name">
+                    @error('prenom')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" name="email" placeholder="Email Address">
+                  <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" placeholder="Email Address">
+                  @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                 </div>
+
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password" placeholder="Password">
+                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                   </div>
                   <div class="col-sm-6">
                     <input type="password" class="form-control form-control-user" name="password_confirmation" placeholder="Repeat Password">
@@ -37,15 +59,25 @@
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="date" class="form-control form-control-user" name="date_nais" placeholder="Password">
+                    <input type="date" class="form-control form-control-user @error('date_nais') is-invalid @enderror" name="date_nais" placeholder="Password">
+                    @error('date_nais')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" name="telephone" placeholder="Téléphone">
+                    <input type="text" class="form-control form-control-user @error('telephone') is-invalid @enderror" name="telephone" placeholder="Téléphone">
+                    @error('telephone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                    @enderror
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <input type="submit" class="btn btn-primary btn-user btn-block" name="exampleInputEmail" value="Register Account">
+                  <input type="submit" class="btn btn-primary btn-user btn-block"  >
                 </div>
 
                
@@ -67,14 +99,14 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="{{URL::asset('vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="{{URL::asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="{{URL::asset('js/sb-admin-2.min.js')}}"></script>
 
 </body>
 
