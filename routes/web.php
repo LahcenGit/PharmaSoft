@@ -15,9 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('Dashbord/index', function () {
-    return view('Dashbord.index');
-});
 
 Route::get('Dashbord/login', function () {
     return view('Dashbord.login');
@@ -27,8 +24,16 @@ Route::get('Dashbord/register', function () {
     return view('Dashbord.register');
 });
 
+Route::get('Dashbord/users', function () {
+    return view('Dashbord.users');
+});
+
+
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/Dashbord/index', 'HomeController@index2')->name('index');
+
+Route::resource('/Dashbord/users', 'UserController');

@@ -54,6 +54,15 @@
   <!-- Page level custom scripts -->
   <script src="{{URL::asset('js/demo/chart-area-demo.js')}}"></script>
   <script src="{{URL::asset('js/demo/chart-pie-demo.js')}}"></script>
+   
+  <!-- Pour la gestion des tableau et l'jout des filtre de recherche automatiquement -->
+  <script src="{{URL::asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{URL::asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{URL::asset('js/demo/datatables-demo.js')}}"></script>
+
+ 
 
 </body>
 
