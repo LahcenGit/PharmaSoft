@@ -16,4 +16,23 @@ class UserController extends Controller
         return view('Dashbord.users',['users' =>$list_user]);
 
     }
+
+    public function destroy(Request $request, $id){
+        $user = User::find($id);
+        $user->delete();
+        return redirect('Dashbord/users');
+
+    }
+
+
+    public function designAsAdmin(Request $request, $id){
+        
+        $user = User::find($id);
+        $user->update(['is_admin' => true]);
+    
+        
+        return redirect('Dashbord/users');
+
+    }
 }
+

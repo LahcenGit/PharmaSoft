@@ -10,8 +10,15 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
+
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Utilisateurs inscrits</h6>
+      <div class="row">
+      <h6 class="m-0 font-weight-bold text-primary col-10">Utilisateurs inscrits</h6>
+      <button type="submit" class="btn btn-success float-right col-2"><i class="fas fa-plus"> </i> Ajouter un pharmacien 
+      </button>
+    
+      </div>
+    
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -55,13 +62,11 @@
                     <a href="" class="btn btn-warning btn-circle">
                         <i class="fas fa-pencil-alt"> </i>
                     </a>
-                    <a href="" class="btn btn-danger btn-circle">
+                    <button type="submit" class="btn btn-danger btn-circle"> <a class="btn btn-danger btn-circle"> 
                         <i class="fas fa-trash"> </i>
-                    </a>
-                    <a href="" class="btn btn-success btn-circle">
-                        <i class="fas fa-user-nurse"> </i>
-                    </a>
-                    <a href="" class="btn btn-primary btn-circle">
+                    </a></button>
+                    
+                    <a href="{{url('Dashbord/designAsadmin/'.$user->id)}}" class="btn btn-primary btn-circle">
                         <i class="fas fa-user-cog"> </i>
                     </a>
                     

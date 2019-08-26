@@ -37,3 +37,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Dashbord/index', 'HomeController@index2')->name('index');
 
 Route::resource('/Dashbord/users', 'UserController');
+Route::get('/Dashbord/designAsadmin/{id}', 'UserController@designAsAdmin');
