@@ -27,6 +27,12 @@ Route::get('Dashbord/register', function () {
 Route::get('Dashbord/users', function () {
     return view('Dashbord.users');
 });
+Route::get('Dashbord/medics', function () {
+    return view('Dashbord.medics');
+});
+Route::get('Dashbord/adduser', function () {
+    return view('Dashbord.adduser');
+});
 
 
 
