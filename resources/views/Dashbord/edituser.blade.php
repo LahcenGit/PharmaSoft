@@ -6,8 +6,8 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">Ajouter des utilisateurs</h1>
-            <p class="mb-4">Vous Pouvez ajouter tout simplement un utilisateur ou un pharmacien </a>.</p>
+            <h1 class="h3 mb-2 text-gray-800">Modifiez l'utilisateur </h1>
+            <p class="mb-4">Vous Pouvez modifier tout simplement un utilisateur </a>.</p>
 
 
             <body class="bg-gradient-primary">
@@ -27,11 +27,12 @@
                   </div></div>
                 
               </div>
-              <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" class="user">
+              <form method="POST" action="{{url('Dashbord/users/'.$user->id)}}" enctype="multipart/form-data" class="user">
+              <input type="hidden" name="_method" value="PUT">
               @csrf
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" name="name" placeholder="First Name" value="{{ old('name' )}}">
+                    <input type="text" class="form-control form-control-user @error('name') is-invalid @enderror" name="name" placeholder="First Name" value="{{ $user->name }}">
                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -39,7 +40,7 @@
                     @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user @error('prenom') is-invalid @enderror" name="prenom" placeholder="Last Name" value="{{ old('prenom' )}}">
+                    <input type="text" class="form-control form-control-user @error('prenom') is-invalid @enderror" name="prenom" placeholder="Last Name" value="{{ $user->prenom }}">
                     @error('prenom')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -48,7 +49,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" placeholder="Email Address" value="{{ old('email' )}}">
+                  <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" placeholder="Email Address" value="{{ $user->email }}">
                   @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -72,7 +73,7 @@
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0 ">
-                    <input type="date" class="form-control form-control-user @error('date_nais') is-invalid @enderror" name="date_nais" value="{{ old('date_nais' )}}">
+                    <input type="date" class="form-control form-control-user @error('date_nais') is-invalid @enderror" name="date_nais" value="{{ $user->date_nais }}">
                     @error('date_nais')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -80,7 +81,7 @@
                     @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user @error('telephone') is-invalid @enderror" name="telephone" placeholder="Téléphone" value="{{ old('telephone' )}}">
+                    <input type="text" class="form-control form-control-user @error('telephone') is-invalid @enderror" name="telephone" placeholder="Téléphone" value="{{ $user->telephone }}">
                     @error('telephone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -91,9 +92,10 @@
                 
                 <div class="form-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="photo" id="validatedCustomFile" value="{{ old('photo' )}}">
+                        <input type="file" class="custom-file-input" name="photo" id="validatedCustomFile" value="{{$user->photo}}">
                         <label class="custom-file-label  is-invalid" for="validatedCustomFile">Photo ...</label>
                         <div class="invalid-feedback">Example invalid custom file feedback</div>
+
                         @error('photo')
                                 <div class="invalid-feedback d-block">
                                  <strong>{{ $message }}</strong>
@@ -104,6 +106,7 @@
                     </div>
                     
                  </div>
+             
 
 
                 

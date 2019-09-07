@@ -14,8 +14,14 @@
   <div class="card-header py-3">
       <div class="row">
       <h6 class="m-0 font-weight-bold text-primary col-10">Utilisateurs inscrits</h6>
-      <button type="submit" class="btn btn-success float-right col-2"><i class="fas fa-plus"> </i> Ajouter un pharmacien 
+      
+      <a href="{{url('Dashbord/adduser')}} " >
+      <button type="submit" class="btn btn-success ">
+        
+          <i class="fas fa-plus"> </i> Ajouter un pharmacien 
+       
       </button>
+      </a>
     
       </div>
     
@@ -59,7 +65,7 @@
                     <a href="" class="btn btn-info btn-circle">
                         <i class="fas fa-info-circle"> </i>
                     </a>
-                    <a href="" class="btn btn-warning btn-circle">
+                    <a href="{{url('Dashbord/users/'.$user->id.'/edit')}}" class="btn btn-warning btn-circle">
                         <i class="fas fa-pencil-alt"> </i>
                     </a>
                     <button type="submit" class="btn btn-danger btn-circle"> <a class="btn btn-danger btn-circle"> 

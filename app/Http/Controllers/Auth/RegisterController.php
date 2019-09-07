@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+
 
 class RegisterController extends Controller
 {
@@ -28,17 +31,42 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+   //protected $redirectTo = '/home';
+   public function redirectTo(){
+        
+    // User role
+   // $role = Auth::user()->role->name; 
+    
+   /* // Check user role
+    switch ($role) {
+        case 'Manager':
+                return '/dashboard';
+            break;
+        case 'Employee':
+                return '/projects';
+            break; 
+        default:
+                return '/login'; 
+            break;
+            }*/
+            return '/Dashbord/users';
+    
+
+}
+   
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+
+
+     // Important : illimination de la methode pour pouvopir faire l'inscription manuelle des users
+    /*public function __construct()
     {
         $this->middleware('guest');
-    }
+    }**/
 
     /**
      * Get a validator for an incoming registration request.
@@ -46,6 +74,20 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+    
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -55,6 +97,7 @@ class RegisterController extends Controller
            'password' => ['required', 'string', 'min:8', 'confirmed'],
            'date_nais' => ['required','string'],
            'telephone' => ['required','string','max:255'],
+           'photo' => ['required'],
         ]);
     }
 
@@ -64,8 +107,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data )
     {
+        $request = Request();
+        $path = $request->photo->store('image');
        
         return User::create([
             'name' => $data['name'],
@@ -74,6 +119,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'date_nais' => $data['date_nais'],
             'telephone' => $data['telephone'],
+            'photo' => $path,
+            
         ]);
+
+       
     }
 }
