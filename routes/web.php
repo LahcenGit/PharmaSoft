@@ -38,11 +38,17 @@ Route::get('Dashbord/adduser', function () {
 
 
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/Dashbord/index', 'HomeController@index2')->name('index');
 
 Route::resource('/Dashbord/users', 'UserController');
+Route::resource('/Dashbord/fournisseurs', 'FournisseurController');
+
+
+
 Route::get('/Dashbord/designAsadmin/{id}', 'UserController@designAsAdmin');
+
 
 
 //Auth::routes();

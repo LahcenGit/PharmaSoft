@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Image;
+Use App\Http\Requests\UserRequest;
 
 
 class UserController extends Controller
@@ -42,7 +43,7 @@ class UserController extends Controller
         return view('Dashbord.edituser',['user' => $user]);
     }
 
-    public function update(Request $request , $id){
+    public function update(userRequest $request , $id){
         $user = User::find($id);
 
         $user->name = $request->input('name');
@@ -65,8 +66,6 @@ class UserController extends Controller
     	Image::make($avatar)->resize(300, 300)->save( public_path('/storage/image/' . $filename ) );
     	$user->photo = $filename;
         
-
-
         $user->save();
 
         return redirect('Dashbord/users');
