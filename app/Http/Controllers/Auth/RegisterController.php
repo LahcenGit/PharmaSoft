@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Image;
 
 
 class RegisterController extends Controller
@@ -110,7 +111,12 @@ class RegisterController extends Controller
     protected function create(array $data )
     {
         $request = Request();
-        $path = $request->photo->store('image');
+        
+
+        $avatar = $request->file('photo');
+    	$filename = time() . '.' . $avatar->getClientOriginalExtension();
+    	Image::make($avatar)->resize(300, 300)->save( public_path('/storage/image/' . $filename ) );
+    	 
        
         return User::create([
             'name' => $data['name'],
@@ -119,7 +125,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'date_nais' => $data['date_nais'],
             'telephone' => $data['telephone'],
-            'photo' => $path,
+            'photo' => $filename,
             
         ]);
 

@@ -62,19 +62,28 @@
                 <form action="{{url('Dashbord/users/'.$user->id)}}" method="post">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
-                    <a href="" class="btn btn-info btn-circle">
-                        <i class="fas fa-info-circle"> </i>
-                    </a>
+                   
                     <a href="{{url('Dashbord/users/'.$user->id.'/edit')}}" class="btn btn-warning btn-circle">
                         <i class="fas fa-pencil-alt"> </i>
                     </a>
-                    <button type="submit" class="btn btn-danger btn-circle"> <a class="btn btn-danger btn-circle"> 
+                    @can('before', $user)
+                    <button type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Vous voulez vraiment supprimer?')"> <a class="btn btn-danger btn-circle" > 
                         <i class="fas fa-trash"> </i>
                     </a></button>
-                    
-                    <a href="{{url('Dashbord/designAsadmin/'.$user->id)}}" class="btn btn-primary btn-circle">
-                        <i class="fas fa-user-cog"> </i>
+                    @endcan
+
+
+                    @can('before', $user)
+                    @if(!$user->is_admin)
+                    <a href="{{url('Dashbord/designAsadmin/'.$user->id)}}"  onclick="return confirm('Désigner comme admin?')" class="btn btn-success btn-circle" >
+                        <i class="fas fa-user"> </i>
                     </a>
+                    @elseif($user->is_admin)
+                    <a href="{{url('Dashbord/desiableAdmin/'.$user->id)}}"  onclick="return confirm('Supprimer les permision dadmin?')" class="btn btn-primary btn-circle" >
+                        <i class="fas fa-user-slash"> </i>
+                    </a>
+                    @endif
+                    @endcan
                     
 
                 </form>

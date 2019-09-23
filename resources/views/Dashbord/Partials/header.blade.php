@@ -10,6 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  
 
   <title>SB Admin 2 - Dashboard</title>
 
@@ -20,6 +21,13 @@
   <!-- Custom styles for this template-->
   <link href="{{URL::asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
   <link href="{{URL::asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+  
+  <style type="text/css"> .espace{  margin-left: 5px;} </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script> 
+
+  <style>
+  
+  </style>
   
 
 </head>

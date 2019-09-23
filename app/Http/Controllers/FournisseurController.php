@@ -33,6 +33,25 @@ class FournisseurController extends Controller
         
         return redirect('Dashbord/fournisseurs');
 
+               // Fill form with data array
+               $pdf = new Pdf('facture_final.pdf');
+               $pdf->fillForm([
+                       'Nfacture'=>$request->input('nom'),
+                       'dateF'=>$request->input('nom'),
+                       'medic'=>$request->input('nom'),
+                       'qteM'=>$request->input('nom'),
+                       'prixTotal'=>$request->input('nom')
+                       
+                   ])
+                   ->needAppearances()
+                   ->saveAs('filled.pdf');
+   
+               
+               // Check for errors
+               if (!$pdf->saveAs('my.pdf')) {
+                   $error = $pdf->getError();
+               }
+
 
     }
 

@@ -5,11 +5,9 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
-    </div>
-    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+  <a class="sidebar-brand d-flex align-items-center justify-content-center p-3" href="{{URL('')}}">
+    
+    <img src="{{ asset('images/logo-ftr.png') }}" alt="Logo" />
   </a>
 
   <!-- Divider -->
@@ -38,11 +36,15 @@
   </a>
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Custom Components:</h6>
+      
+      
       <a class="collapse-item" href="{{ url('Dashbord/users') }}">Users</a>
+      
       <a class="collapse-item" href="{{ url('Dashbord/fournisseurs') }}">Fournisseurs</a>
-      <a class="collapse-item" href="buttons.html">Buttons</a>
-      <a class="collapse-item" href="cards.html">Cards</a>
+      <a class="collapse-item" href="{{ url('medicaments/gerer') }}">Médicaments</a>
+     
+
+      
     </div>
   </div>
 </li>
@@ -55,8 +57,9 @@
   </a>
   <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Custom Utilities:</h6>
-      <a class="collapse-item" href="utilities-color.html">Colors</a>
+      
+      <a class="collapse-item" href="{{ url('medicament/medicsmin') }}">Stock minimum</a>
+      <a class="collapse-item" href="{{ url('medicament/medicsrupture') }}">Medicaments en rupture</a>
       <a class="collapse-item" href="utilities-border.html">Borders</a>
       <a class="collapse-item" href="utilities-animation.html">Animations</a>
       <a class="collapse-item" href="utilities-other.html">Other</a>

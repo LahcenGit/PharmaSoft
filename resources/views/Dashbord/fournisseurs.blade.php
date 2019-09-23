@@ -67,13 +67,13 @@
                 <form action="{{url('Dashbord/fournisseurs/'.$four->id)}}" method="post">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
-                    <a href="" class="btn btn-info btn-circle">
+                    <a onclick="return functioninfo()" href="#" class="btn btn-info btn-circle">
                         <i class="fas fa-info-circle"> </i>
                     </a>
                     <a href="{{url('Dashbord/fournisseurs/'.$four->id.'/edit')}}" class="btn btn-warning btn-circle">
                         <i class="fas fa-pencil-alt"> </i>
                     </a>
-                    <button type="submit" class="btn btn-danger btn-circle" onclick="openModel()"> <a class="btn btn-danger btn-circle"> 
+                    <button type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Vous voulez vraiment supprimer?')"> <a class="btn btn-danger btn-circle"> 
                         <i class="fas fa-trash"> </i>
                     </a></button>
                     
@@ -94,11 +94,11 @@
 <!-- /.container-fluid -->
 
 
-<div class="modal" tabindex="-1" role="dialog">
+<div id ="modalinfo" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h5 id ='titleinfo'class="modal-title"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -117,12 +117,7 @@
 </div>
 <!-- End of Main Content -->
 
-<script>
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
-
-</script>
+<script type="text/javascript" src="{{asset('assets/confirmeDeleteFournisseur.js')}}" ></script>
 
 
 @include('/dashbord/partials/footer')

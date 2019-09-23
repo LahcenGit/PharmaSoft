@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use Auth;
 Use App\Http\Requests\UserRequest;
 
 
@@ -16,7 +17,15 @@ class UserController extends Controller
     }
 
     public function index(){
+
+        if(Auth::user()->is_admin){
         $list_user = User::all();
+        }
+        else{
+            $list_user = User::where('id',Auth::user()->id)->get();
+        }
+        
+        
         return view('Dashbord.users',['users' =>$list_user]);
 
     }
@@ -36,10 +45,19 @@ class UserController extends Controller
         return redirect('Dashbord/users');
 
     }
+    
+    public function desiableAdmin(Request $request, $id){
+        
+        $user = User::find($id);
+        $user->update(['is_admin' => false]);
+        return redirect('Dashbord/users');
 
+    }
 
     public function edit($id){
         $user = User::find($id);
+
+        //$this->authorize('update', $user);
         return view('Dashbord.edituser',['user' => $user]);
     }
 

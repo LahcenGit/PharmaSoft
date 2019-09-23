@@ -22,8 +22,8 @@
             <div class="p-5">
               <div class="text-center">
                 <div class="h4 text-gray-900 mb-4">
-                     <div  class="btn btn-success btn-circle btn-lg">
-                    <i class="fas fa-plus"></i>
+                     <div  class="btn btn-warning btn-circle btn-lg">
+                    <i class="fas fa-edit"></i>
                   </div></div>
                 
               </div>
@@ -59,7 +59,7 @@
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password" placeholder="Password">
+                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" name="password" placeholder="Password" >
                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
