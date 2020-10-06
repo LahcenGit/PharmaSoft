@@ -67,9 +67,7 @@
                 <form action="{{url('Dashbord/fournisseurs/'.$four->id)}}" method="post">
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
-                    <a onclick="return functioninfo()" href="#" class="btn btn-info btn-circle">
-                        <i class="fas fa-info-circle"> </i>
-                    </a>
+                    
                     <a href="{{url('Dashbord/fournisseurs/'.$four->id.'/edit')}}" class="btn btn-warning btn-circle">
                         <i class="fas fa-pencil-alt"> </i>
                     </a>

@@ -1,6 +1,6 @@
 <?php
 
-
+use niklasravnsborg\LaravelPdf\Facades\PDF;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +45,14 @@ Route::get('medicsFront', function () {
 
 
 
+
+Route::get('Dashbord/pdf', function(){
+    $data = ['name' => 'lahcene'];
+
+    $pdf = PDF::loadView('pdf-document', $data);
+    $filename = time() . '.' . 'pdf';
+	return $pdf->stream($filename);
+});
 
 
 
